@@ -1,0 +1,7 @@
+[
+  {"label":"option 1","favorite":true,  "type": 1},
+  {"label":"name",    "favorite":false, "type": 1},
+  {"label":"name",    "favorite":false, "type": 2},
+  {"label":"option 2","favorite":true,  "type": 2},
+  {"label":"option 3","favorite":true,  "type": 2}
+]
