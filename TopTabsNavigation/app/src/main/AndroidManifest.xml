@@ -13,11 +13,11 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".OptionTwoNewActivity"
+            android:name=".ui.optiontwo.OptionTwoNewActivity"
             android:label="@string/title_activity_option_two_new"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".OptionOneNewActivity"
+            android:name=".ui.optionone.OptionOneNewActivity"
             android:label="@string/title_activity_option_one_new"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -30,11 +30,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OptionTwoScrollingActivity"
+            android:name=".ui.optiontwo.OptionTwoScrollingActivity"
             android:label="@string/title_activity_option_two_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".OptionOneActivity"
+            android:name=".ui.optionone.OptionOneActivity"
             android:label="@string/title_activity_option_one"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

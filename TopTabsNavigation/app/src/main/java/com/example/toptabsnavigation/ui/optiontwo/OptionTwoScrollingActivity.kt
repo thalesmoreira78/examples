@@ -1,25 +1,27 @@
-package com.example.toptabsnavigation
+package com.example.toptabsnavigation.ui.optiontwo
 
+import android.content.Intent
 import android.os.Bundle
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.toptabsnavigation.R
 
-class OptionTwoNewActivity : AppCompatActivity() {
+class OptionTwoScrollingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_option_two_new)
+        setContentView(R.layout.activity_option_two_scrolling)
         setSupportActionBar(findViewById(R.id.toolbar))
-
+        findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(this, OptionTwoNewActivity::class.java)
+            startActivity(intent)
         }
 
-        setSupportActionBar(findViewById(R.id.optionTwoNewActivityToolbar))
+        setSupportActionBar(findViewById(R.id.optionTwoToolbar))
         val actionBar = supportActionBar
-        actionBar!!.title = "Option 2 New Fragment"
+        actionBar!!.title = "Option 2"
         actionBar.setDisplayHomeAsUpEnabled(true)
     }
 

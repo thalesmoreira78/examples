@@ -19,9 +19,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.ViewPager
-import com.example.toptabsnavigation.OptionOneActivity
-import com.example.toptabsnavigation.OptionTwoScrollingActivity
+import com.example.toptabsnavigation.ui.optionone.OptionOneActivity
+import com.example.toptabsnavigation.ui.optiontwo.OptionTwoScrollingActivity
 import com.example.toptabsnavigation.R
 import com.example.toptabsnavigation.classes.ButtonClass
 import com.google.gson.Gson
