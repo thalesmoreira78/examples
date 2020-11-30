@@ -13,6 +13,14 @@ class OptionOnePageViewModel : ViewModel() {
         "Option One section: $it"
     }
 
+    val activity: LiveData<Class<*>> = Transformations.map(_index) {
+        if (it == 1) {
+            OptionOneNewActivity::class.java
+        } else {
+            OptionOneNew2Activity::class.java
+        }
+    }
+
     fun setIndex(index: Int) {
         _index.value = index
     }

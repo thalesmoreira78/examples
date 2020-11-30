@@ -112,6 +112,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_option_one_new">OptionOneNewActivity</string>
+    <string name="title_activity_option_one_new_2">OptionOneNew2Activity</string>
     <string name="title_activity_option_two_new">OptionTwoNewActivity</string>
     <string name="preference_file_key">DATA_JSON</string>
     <string name="saved_high_score_key">saved_high_score_key</string>

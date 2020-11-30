@@ -21,6 +21,10 @@
             android:label="@string/title_activity_option_one_new"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ui.optionone.OptionOneNew2Activity"
+            android:label="@string/title_activity_option_one_new_2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

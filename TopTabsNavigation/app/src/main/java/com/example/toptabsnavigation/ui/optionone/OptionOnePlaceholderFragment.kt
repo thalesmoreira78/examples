@@ -36,11 +36,14 @@ class OptionOnePlaceholderFragment : Fragment() {
             textView.text = it
         })
 
-        val buttonOptionNewActivity: Button = root.findViewById(R.id.buttonOptionNewActivity)
-        buttonOptionNewActivity.setOnClickListener { view ->
-            val intent = Intent(context, OptionOneNewActivity::class.java)
-            startActivity(intent)
-        }
+        pageViewModel.activity.observe(this, Observer<Class<*>> {
+            val intent = Intent(context, it)
+            val buttonOptionNewActivity: Button = root.findViewById(R.id.buttonOptionNewActivity)
+            buttonOptionNewActivity.setOnClickListener {
+                startActivity(intent)
+            }
+        })
+
         return root
     }
 
