@@ -1,3 +1,3 @@
 package com.example.toptabsnavigation.classes
 
-class ButtonClass(val label: String, val favorite: Boolean, val type: Int)
+class ButtonClass(val id: Int, var label: String, var favorite: Boolean, var type: Int)
