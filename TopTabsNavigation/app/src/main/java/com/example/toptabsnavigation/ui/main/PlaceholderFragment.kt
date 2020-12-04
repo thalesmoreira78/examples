@@ -23,6 +23,7 @@ import com.example.toptabsnavigation.ui.optionone.OptionOneActivity
 import com.example.toptabsnavigation.ui.optiontwo.OptionTwoScrollingActivity
 import com.example.toptabsnavigation.R
 import com.example.toptabsnavigation.classes.ButtonClass
+import com.example.toptabsnavigation.files.filename
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -32,7 +33,6 @@ import com.google.gson.reflect.TypeToken
 class PlaceholderFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
-    private var fileName = "data.json"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class PlaceholderFragment : Fragment() {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
 
             var jsonFileString = ""
-            context!!.openFileInput(fileName).use { stream ->
+            context!!.openFileInput(filename).use { stream ->
                 val text = stream.bufferedReader().use {
                     it.readText()
                 }
@@ -129,7 +129,7 @@ class PlaceholderFragment : Fragment() {
                 if (event.rawX >= button.getRight() - button.getCompoundDrawables()
                         .get(DRAWABLE_RIGHT).getBounds().width()
                 ) {
-                    writeJSONtoFile(button, buttonClass, fileName)
+                    writeJSONtoFile(button, buttonClass, filename)
                     return@OnTouchListener true
                 }
             }
@@ -188,7 +188,7 @@ class PlaceholderFragment : Fragment() {
         var jsonString: String = gson.toJson(buttons)
         Log.d("writeJSONtoFile", jsonString)
 
-        // val fileName = "data.json"
+        // val fileName = "buttons.kt"
         context!!.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
             output.write(jsonString!!.toByteArray())
         }

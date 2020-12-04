@@ -1,7 +1,5 @@
 package com.example.toptabsnavigation
 
-
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -9,11 +7,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
+import com.example.toptabsnavigation.files.data
+import com.example.toptabsnavigation.files.filename
 import com.example.toptabsnavigation.ui.main.PageViewModel
-import com.example.toptabsnavigation.ui.main.PlaceholderFragment
 import com.example.toptabsnavigation.ui.main.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
-import java.io.IOException
+import java.io.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,19 +20,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val file = File(getFileStreamPath(""), filename)
 
-        val fileName = "data.json"
-        val fileBody = getJsonDataFromAsset(baseContext, fileName)
-
-        baseContext!!.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
-            output.write(fileBody!!.toByteArray())
+        if (!file.isFile) {
+            file.bufferedWriter().use { out -> out.write(data) }
         }
 
-        baseContext!!.openFileInput(fileName).use { stream ->
-            val text = stream.bufferedReader().use {
-                it.readText()
+        try {
+            baseContext!!.openFileInput(filename).use { stream ->
+                val text = stream.bufferedReader().use {
+                    it.readText()
+                }
+                Log.d("FILE", "$filename, file: $text")
             }
-            Log.d("MainActivity", "onCreate, file: $text")
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
 
         setContentView(R.layout.activity_main)
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 // val intent = Intent(baseContext, MainActivity::class.java)
                 // startActivity(intent)
                 viewPager.offscreenPageLimit = 0
-                baseContext!!.openFileInput(fileName).use { stream ->
+                baseContext!!.openFileInput(filename).use { stream ->
                     val text = stream.bufferedReader().use {
                         it.readText()
                     }
@@ -78,16 +79,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-
-    private fun getJsonDataFromAsset(context: Context, fileName: String): String? {
-        val jsonString: String
-        try {
-            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            return null
-        }
-        return jsonString
     }
 }
